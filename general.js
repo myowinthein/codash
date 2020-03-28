@@ -1,5 +1,5 @@
 // prepare variables
-const ipURL = 'http://ip-api.com/json'
+const ipURL = 'https://ipapi.co/json/'
 const summaryURL = 'https://corona.lmao.ninja/all'
 const countryURL = 'https://corona.lmao.ninja/countries?sort='
 const worldPopulation = 7800000000
@@ -12,7 +12,7 @@ function getIP () {
 	fetch(ipURL)
 		.then((response) => {
 			response.json().then(function(data) {
-				ipCountryCode = data.countryCode
+				ipCountryCode = data.country_code
 			})
 		})
 }
@@ -59,7 +59,7 @@ function getSummaryData () {
 			})
 		})
 		.catch((err) => {
-			alert('Something wrong in receiving summary data!')
+			console.log('Something wrong in receiving summary data!')
 		})
 }
 
@@ -108,7 +108,7 @@ function getCountryData () {
 			})
 		})
 		.catch((err) => {
-			alert('Something wrong in receiving country data!')
+			console.log('Something wrong in receiving country data!')
 		})
 }
 
