@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+		<link href="global.css" rel="stylesheet">
+
+		<script src="general.js"></script>
+  	</head>
+	<body>
+		<!-- Worldwide Status -->
+		<div id="summaryTable">
+			<div class="card">
+				<div class="title">
+					<h1 class="warning">Infected</h1>
+				</div>
+				<div class="body">
+					<h2 id="totalCases"></h2>
+					<h4><span id="percentageWorldPopulartionCases"></span> <span class="small-font">of <abbr title="Based on 7.8 billion">World Population</abbr></span></h4>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="title">
+					<h1 class="dark">Deaths</h1>
+				</div>
+				<div class="body">
+					<h2 id="totalDeaths"></h2>
+					<h4><span id="percentageWorldPopulartionDeaths"></span> <span class="small-font">of <abbr title="Based on 7.8 billion">World Population</abbr></span></h4>
+					<h4><span id="percentageTotalCaseDeaths"></span> <span class="small-font">of Infected</span></h4>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="title">
+					<h1 class="recovered">Recovered</h1>
+				</div>
+				<div class="body">
+					<h2 id="totalRecovered"></h2>
+					<h4><span id="percentageTotalCaseRecovered"></span> <span class="small-font">of Infected</span></h4>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="title">
+					<h1 class="active">Monitoring</h1>
+				</div>
+				<div class="body">
+					<h2 id="totalActive"></h2>
+					<h4><span id="percentageWorldPopulartionActive"></span> <span class="small-font">of <abbr title="Based on 7.8 billion">World Population</abbr></span></h4>
+					<h4><span id="percentageTotalCaseActive"></span> <span class="small-font">of Infected</span></h4>
+				</div>
+			</div>
+		</div>
+
+		<!-- Country Status -->
+		<table id="countryTable" class="table">
+			<thead>
+				<tr class="stable-row">
+					<th rowspan="2" id="sortCountry">Country <span>&#8661;</span></th>
+					<th colspan="2">Today</th>
+					<th colspan="4">Total</th>
+				</tr>
+				<tr class="stable-row">
+					<th class="warning" id="sortTodayCases">Infected <span>&#8661;</span></th>
+					<th class="dark" id="sortTodayDeaths">Deaths <span>&#8661;</span></th>
+					<th class="warning" id="sortTotalCases">Infected <span>&#8661;</span></th>
+					<th class="dark" id="sortTotalDeaths">Deaths <span>&#8661;</span></th>
+					<th class="recovered" id="sortTotalRecovered">Recovered <span>&#8661;</span></th>
+					<th class="active" id="sortTotalActive">Monitoring <span>&#8661;</span></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+		<!-- Additional Information -->
+		<div class="footer">
+			<span>Last updated <span id="lastUpdatedTime" style="color: #128c86"></span> ago | </span>
+			<span>Refresh in <span style="color: #128c86"><span id="reloadTimer"></span>s</span></span>
+		</div>
+	</body>
+</html>
