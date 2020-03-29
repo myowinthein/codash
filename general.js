@@ -27,14 +27,14 @@ function getSummaryData () {
 
 				const totalDeaths = data.deaths
 				const percentageWorldPopulartionDeaths = calculatePercentage(worldPopulation, totalDeaths)
-				const percentageTotalCaseDeaths = calculatePercentage(totalCases, totalDeaths)
+				const percentageTotalCaseDeaths = calculatePercentage(totalCases, totalDeaths, 2)
 
 				const totalRecovered = data.recovered
-				const percentageTotalCaseRecovered = calculatePercentage(totalCases, totalRecovered)
+				const percentageTotalCaseRecovered = calculatePercentage(totalCases, totalRecovered, 2)
 
 				const totalActive = totalCases - (totalDeaths + totalRecovered)
 				const percentageWorldPopulartionActive = calculatePercentage(worldPopulation, totalActive)
-				const percentageTotalCaseActive = calculatePercentage(totalCases, totalActive)
+				const percentageTotalCaseActive = calculatePercentage(totalCases, totalActive, 2)
 
 				const currentDate = new Date()
 				const refreshDate = new Date(data.updated)
@@ -112,10 +112,9 @@ function getCountryData () {
 		})
 }
 
-function calculatePercentage (total, current) {
+function calculatePercentage (total, current, decimalLimit = 4) {
 	const value = (100 / total) * current
 	const symbol = '%'
-	const decimalLimit = 5
 
 	return value.toFixed(decimalLimit) + symbol
 }
@@ -191,13 +190,13 @@ window.addEventListener('load', (event) => {
 	fetchData()
 
 	// load source data every xxx second
-	let timer = 0
+	let timer = 5
 	setInterval(function() {
-		if (timer == 5) {
+		if (timer == 0) {
 			fetchData()
-			timer = 1
+			timer = 5
 		} else {
-			timer++
+			timer--
 		}
 
 		lastUpdatedSeconds++
