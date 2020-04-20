@@ -1,7 +1,7 @@
 // prepare variables
 const ipURL = 'https://ipapi.co/json/'
-const summaryURL = 'https://corona.lmao.ninja/all'
-const countryURL = 'https://corona.lmao.ninja/countries?sort='
+const summaryURL = 'https://corona.lmao.ninja/v2/all'
+const countryURL = 'https://corona.lmao.ninja/v2/countries?sort='
 const worldPopulation = 7800000000
 
 let countryTableBody, newCountryTableRow, ipCountryCode, lastUpdatedSeconds
