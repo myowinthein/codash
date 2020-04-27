@@ -5,7 +5,7 @@ const countryURL = 'https://corona.lmao.ninja/v2/countries?sort='
 const worldPopulation = 7800000000
 
 let countryTableBody, newCountryTableRow, ipCountryCode, lastUpdatedSeconds
-let sortBy = ''
+let sortBy = 'todayCases'
 
 // prepare functions
 function getIP () {
@@ -69,6 +69,8 @@ function getCountryData () {
 	fetch(countryURL + sortBy)
 		.then((response) => {
 			response.json().then(function(data) {
+				// reset rank
+				let rank = 1;
 				// clear old rows
 				countryTableBody.innerHTML = ''
 
@@ -81,6 +83,7 @@ function getCountryData () {
 
 					newCountryTableRow = `
 						<tr>
+							<td>${thousandSeperator(rank++)}</td>
 							<td class="align-left">
 								<img src="${countryInfo.flag}" class="flagImg" />
 								<a href="${googleMapURL}" target="_blank">${country.country}</a>
