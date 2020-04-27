@@ -21,39 +21,41 @@ function getSummaryData () {
 	fetch(summaryURL)
 		.then((response) => {
 			response.json().then(function(data) {
-				// prepare variables
-				const totalCases = data.cases
-				const percentageWorldPopulartionCases = calculatePercentage(worldPopulation, totalCases)
+				// prepare variables				
+				const totalTested = data.tests
+				const percentageWorldPopulartionTested = calculatePercentage(worldPopulation, totalTested)
 
-				const totalDeaths = data.deaths
-				const percentageWorldPopulartionDeaths = calculatePercentage(worldPopulation, totalDeaths)
-				const percentageTotalCaseDeaths = calculatePercentage(totalCases, totalDeaths, 2)
+				const totalCases = data.cases
+				const percentageInfectedOfTested = calculatePercentage(totalTested, totalCases)
+
+				const totalDeaths = data.deaths			
+				const percentageDeathsOfInfected = calculatePercentage(totalCases, totalDeaths, 2)
 
 				const totalRecovered = data.recovered
-				const percentageTotalCaseRecovered = calculatePercentage(totalCases, totalRecovered, 2)
+				const percentageRecoveredOfInfected = calculatePercentage(totalCases, totalRecovered, 2)
 
-				const totalActive = totalCases - (totalDeaths + totalRecovered)
-				const percentageWorldPopulartionActive = calculatePercentage(worldPopulation, totalActive)
-				const percentageTotalCaseActive = calculatePercentage(totalCases, totalActive, 2)
+				const totalActive = data.active		
+				const percentageMonitoringOfInfected = calculatePercentage(totalCases, totalActive, 2)
 
 				const currentDate = new Date()
 				const refreshDate = new Date(data.updated)
 				lastUpdatedSeconds = (currentDate.getTime() - refreshDate.getTime()) / 1000
 
 				// feed data
+				addData('totalTested', totalTested)
+				addData('percentageWorldPopulartionTested', percentageWorldPopulartionTested, false)
+
 				addData('totalCases', totalCases)
-				addData('percentageWorldPopulartionCases', percentageWorldPopulartionCases, false)
+				addData('percentageInfectedOfTested', percentageInfectedOfTested, false)
 
 				addData('totalDeaths', totalDeaths)
-				addData('percentageWorldPopulartionDeaths', percentageWorldPopulartionDeaths, false)
-				addData('percentageTotalCaseDeaths', percentageTotalCaseDeaths, false)
+				addData('percentageDeathsOfInfected', percentageDeathsOfInfected, false)
 
 				addData('totalRecovered', totalRecovered)
-				addData('percentageTotalCaseRecovered', percentageTotalCaseRecovered, false)
+				addData('percentageRecoveredOfInfected', percentageRecoveredOfInfected, false)
 
 				addData('totalActive', totalActive)
-				addData('percentageWorldPopulartionActive', percentageWorldPopulartionActive, false)
-				addData('percentageTotalCaseActive', percentageTotalCaseActive, false)
+				addData('percentageMonitoringOfInfected', percentageMonitoringOfInfected, false)
 
 				addData('lastUpdatedTime', secondInFormat(lastUpdatedSeconds), false)
 			})
@@ -85,6 +87,7 @@ function getCountryData () {
 							</td>
 							<td>${thousandSeperator(country.todayCases)}</td>
 							<td>${thousandSeperator(country.todayDeaths)}</td>
+							<td>${thousandSeperator(country.tests)}</td>
 							<td>${thousandSeperator(country.cases)}</td>
 							<td>${thousandSeperator(country.deaths)}</td>
 							<td>${thousandSeperator(country.recovered)}</td>
@@ -100,7 +103,7 @@ function getCountryData () {
 							newRow.classList.add('yrCountry')
 
 							newRow.innerHTML = newCountryTableRow
-							countryTableBodyFirstRow.parentNode.insertBefore(newRow, countryTableBodyFirstRow);
+							countryTableBodyFirstRow.parentNode.insertBefore(newRow, countryTableBodyFirstRow)
 					} else {
 						countryTableBody.insertRow().innerHTML = newCountryTableRow
 					}
@@ -123,6 +126,7 @@ function thousandSeperator (value) {
 	value = value || 0
 	return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
+
 
 function addData (id, value, needSeperator = true) {
 	value = needSeperator ? thousandSeperator(value) : value
@@ -175,6 +179,7 @@ window.addEventListener('load', (event) => {
 	const sortCountry = document.getElementById('sortCountry')
 	const sortTodayCases = document.getElementById('sortTodayCases')
 	const sortTodayDeaths = document.getElementById('sortTodayDeaths')
+	const sortTotalTested = document.getElementById('sortTotalTested')
 	const sortTotalCases = document.getElementById('sortTotalCases')
 	const sortTotalDeaths = document.getElementById('sortTotalDeaths')
 	const sortTotalRecovered = document.getElementById('sortTotalRecovered')
@@ -215,6 +220,10 @@ window.addEventListener('load', (event) => {
 
 	sortTodayDeaths.addEventListener('click', function() {
 		sortTable('todayDeaths')
+	})
+
+	sortTotalTested.addEventListener('click', function() {
+		sortTable('tests')
 	})
 
 	sortTotalCases.addEventListener('click', function() {

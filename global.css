@@ -71,17 +71,20 @@ thead tr:nth-child(2) th {
     width: 25%;
 }
 
-.warning {
-    color: #903103 !important;
+.tested {
+    color: #810390cf !important;
 }
-.active {
-    color: #045686 !important;
+.infected {
+    color: #903103d9 !important;
 }
-.dark {
-    color: 000 !important;
+.monitoring {
+    color: #045686eb !important;
+}
+.deaths {
+    color: #c05252 !important;
 }
 .recovered {
-    color: #089008 !important;
+    color: #089008f7 !important;
 }
 
 .hidden {

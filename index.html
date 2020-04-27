@@ -1,31 +1,44 @@
 <html>
 	<head>
+		<title>Codash</title>
+
+		<link rel="icon" href="favicon.ico">
+
 		<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 		<link href="global.css" rel="stylesheet">
 
-		<script src="general.js"></script>
+		<script src="general.js"></script>		
   	</head>
 	<body>
 		<!-- Worldwide Status -->
 		<div id="summaryTable">
 			<div class="card">
 				<div class="title">
-					<h1 class="warning">Infected</h1>
+					<h1 class="tested">Tested</h1>
 				</div>
 				<div class="body">
-					<h2 id="totalCases"></h2>
-					<h4><span id="percentageWorldPopulartionCases"></span> <span class="small-font">of <abbr title="Based on 7.8 billion">World Population</abbr></span></h4>
+					<h2 id="totalTested"></h2>
+					<h4><span id="percentageWorldPopulartionTested"></span> <span class="small-font">of <abbr title="Based on 7.8 billion">World Population</abbr></span></h4>
 				</div>
 			</div>
 
 			<div class="card">
 				<div class="title">
-					<h1 class="dark">Deaths</h1>
+					<h1 class="infected">Infected</h1>
+				</div>
+				<div class="body">
+					<h2 id="totalCases"></h2>
+					<h4><span id="percentageInfectedOfTested"></span> <span class="small-font">of Tested</abbr></span></h4>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="title">
+					<h1 class="deaths">Deaths</h1>
 				</div>
 				<div class="body">
 					<h2 id="totalDeaths"></h2>
-					<h4><span id="percentageWorldPopulartionDeaths"></span> <span class="small-font">of <abbr title="Based on 7.8 billion">World Population</abbr></span></h4>
-					<h4><span id="percentageTotalCaseDeaths"></span> <span class="small-font">of Infected</span></h4>
+					<h4><span id="percentageDeathsOfInfected"></span> <span class="small-font">of Infected</span></h4>
 				</div>
 			</div>
 
@@ -35,18 +48,17 @@
 				</div>
 				<div class="body">
 					<h2 id="totalRecovered"></h2>
-					<h4><span id="percentageTotalCaseRecovered"></span> <span class="small-font">of Infected</span></h4>
+					<h4><span id="percentageRecoveredOfInfected"></span> <span class="small-font">of Infected</span></h4>
 				</div>
 			</div>
 
 			<div class="card">
 				<div class="title">
-					<h1 class="active">Monitoring</h1>
+					<h1 class="monitoring">Monitoring</h1>
 				</div>
 				<div class="body">
 					<h2 id="totalActive"></h2>
-					<h4><span id="percentageWorldPopulartionActive"></span> <span class="small-font">of <abbr title="Based on 7.8 billion">World Population</abbr></span></h4>
-					<h4><span id="percentageTotalCaseActive"></span> <span class="small-font">of Infected</span></h4>
+					<h4><span id="percentageMonitoringOfInfected"></span> <span class="small-font">of Infected</span></h4>
 				</div>
 			</div>
 		</div>
@@ -57,15 +69,16 @@
 				<tr class="stable-row">
 					<th rowspan="2" id="sortCountry">Country</th>
 					<th colspan="2">Today</th>
-					<th colspan="4">Total</th>
+					<th colspan="5">Total</th>
 				</tr>
 				<tr class="stable-row">
-					<th class="warning" id="sortTodayCases">Infected</th>
-					<th class="dark" id="sortTodayDeaths">Deaths</th>
-					<th class="warning" id="sortTotalCases">Infected</th>
-					<th class="dark" id="sortTotalDeaths">Deaths</th>
+					<th class="infected" id="sortTodayCases">Infected</th>
+					<th class="deaths" id="sortTodayDeaths">Deaths</th>
+					<th class="tested" id="sortTotalTested">Tested</th>
+					<th class="infected" id="sortTotalCases">Infected</th>
+					<th class="deaths" id="sortTotalDeaths">Deaths</th>
 					<th class="recovered" id="sortTotalRecovered">Recovered</th>
-					<th class="active" id="sortTotalActive">Monitoring</th>
+					<th class="monitoring" id="sortTotalActive">Monitoring</th>
 				</tr>
 			</thead>
 			<tbody>
