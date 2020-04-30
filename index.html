@@ -68,18 +68,18 @@
 			<thead>
 				<tr class="stable-row">
 					<th rowspan="2">Rank</th>
-					<th rowspan="2" id="sortCountry">Country</th>
+					<th rowspan="2" id="sortCountry" class="sortable">Country</th>
 					<th colspan="2">Today</th>
 					<th colspan="5">Total</th>
 				</tr>
 				<tr class="stable-row">
-					<th class="infected" id="sortTodayCases">Infected</th>
-					<th class="deaths" id="sortTodayDeaths">Deaths</th>
-					<th class="tested" id="sortTotalTested">Tested</th>
-					<th class="infected" id="sortTotalCases">Infected</th>
-					<th class="deaths" id="sortTotalDeaths">Deaths</th>
-					<th class="recovered" id="sortTotalRecovered">Recovered</th>
-					<th class="monitoring" id="sortTotalActive">Monitoring</th>
+					<th class="infected sortable active" id="sortTodayCases">Infected</th>
+					<th class="deaths sortable" id="sortTodayDeaths">Deaths</th>
+					<th class="tested sortable" id="sortTotalTested">Tested</th>
+					<th class="infected sortable" id="sortTotalCases">Infected</th>
+					<th class="deaths sortable" id="sortTotalDeaths">Deaths</th>
+					<th class="recovered sortable" id="sortTotalRecovered">Recovered</th>
+					<th class="monitoring sortable" id="sortTotalActive">Monitoring</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -88,8 +88,8 @@
 
 		<!-- Additional Information -->
 		<div class="footer">
-			<span>Last updated <span id="lastUpdatedTime" style="color: #128c86"></span> ago | </span>
-			<span>Refresh in <span style="color: #128c86"><span id="reloadTimer"></span>s</span></span>
+			<span>Last updated <span id="lastUpdatedTime" class="timer"></span> ago | </span>
+			<span>Refresh in <span class="timer"><span id="reloadTimer"></span>s</span></span>
 		</div>
 	</body>
 </html>
