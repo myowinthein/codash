@@ -57,7 +57,7 @@ thead tr:first-child th {
 }
 thead tr:nth-child(2) th {
     position: sticky;
-    top: 44px;
+    top: 43.5px;
     background-color: #cacaca;
 }
 
